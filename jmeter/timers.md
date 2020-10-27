@@ -2,6 +2,17 @@
 
 Элементы JMeter из категории `timer` позволяют управлять задержками во время теста.
 
+## Оглавление
+* [Заметки](#Заметки)
+* [Constant Timer](#Constant-Timer)
+* [Uniform Random Timer](#Uniform-Random-Timer)
+* [Gaussian Random Timer](#Gaussian-Random-Timer)
+* [Poisson Random Timer](#Poisson-Random-Timer)
+* [Precise Throughput Timer](#Precise-Throughput-Timer)
+* [Constant Throughput Timer](#Constant-Throughput-Timer)
+* [Synchronizing Timer](#Synchronizing-Timer)
+* [jp@gc - Throughput Shaping Timer](#jp@gc---Throughput-Shaping-Timer)
+
 ## Заметки
 1. Если таймер находится на одном уровне с сэмплерам и контроллерами, то он действует на все эти сэмплеры, а также на 
 сэмплеры в этих контроллерах.
@@ -67,21 +78,18 @@
 ## Poisson Random Timer
 Таймер, который позволяет установить псевдослучайное время задержки в миллисекундах, при каждом обращении к таймеру
 время задержки рассчитывается заново.
-Всем добрый день!
 
 Математику постигнуть не смог, данные основанны на синтетических тестах:
 * ~99% всех случайных чисел, которые генерирует poisson random timer находятся в диапазоне от 
 `constant delay + (0.75 * lambda)` до `constant delay + (1.25 * lambda)`
 * Если у вас огромное количество таймеров, большие значения в lambda могут вызвать проблемы. 
-Например, при lambda = 100 10 000 000 чисел у меня рассчитывались 3.5 секунды, при lambda = 300 - 7.3. 
+Например, при lambda = 100 10 000 000 чисел у меня рассчитывались 3.5 секунды, при lambda = 300 - 7.3 секунды. 
 Сильно возрастает нагрузка на cpu.
-
 Параметры:
 * Lambda (in milliseconds) - число, от 75 до 125% которого будет прибавляться к постоянной части задержки.
 * Constant Delay Offset (in milliseconds) - постоянная часть задержки. 
 
 ## Precise Throughput Timer
-
 >Таймер, который позволяет пользователю задать нагрузку (количество сэмплов в секунду/минуту/час/и т.д.), с которой он 
 >хочет запустить свои тесты. Данный таймер, в отличие от [Constant Throughput Timer](#Constant-Throughput-Timer), позволяет пользователю более гибко 
 >настроить распределение сэмплов по времени. Кроме того, выполнение запланировано случайным образом, что позволяет 
@@ -101,7 +109,6 @@
 * Random seed (change from 0 to random)
 
 ## Constant Throughput Timer
-
 Таймер, который позволяет поддерживать постоянную пропускную способность.
 
 Параметры:
@@ -114,7 +121,6 @@
     * all active threads in current thread group (shared)
 
 ## Synchronizing Timer 
-
 Таймер блокирует выполнение скрипта для потоков до тех пор, пока до него не дайдет количество потоков, указанное
 в первом параметре, либо же не закончится время из второго параметра.
 
@@ -123,5 +129,4 @@
 * Timeout in milliseconds
 
 ## jp@gc - Throughput Shaping Timer
-
 Этот таймер позволяет настроить нужный RPS для теста. Используется в паре с Concurrency Thread Group.
