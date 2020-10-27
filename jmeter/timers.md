@@ -11,7 +11,7 @@
 * [Precise Throughput Timer](#Precise-Throughput-Timer)
 * [Constant Throughput Timer](#Constant-Throughput-Timer)
 * [Synchronizing Timer](#Synchronizing-Timer)
-* [jp@gc - Throughput Shaping Timer](#jp@gc---Throughput-Shaping-Timer)
+* [jp@gc - Throughput Shaping Timer](#jpgc---throughput-shaping-timer)
 
 ## Заметки
 1. Если таймер находится на одном уровне с сэмплерам и контроллерами, то он действует на все эти сэмплеры, а также на 
